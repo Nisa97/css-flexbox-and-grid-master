@@ -1,0 +1,63 @@
+$base-color: red;
+
+@mixin childHandler($childnum, $color) {
+  background-color: $color;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100vh;
+  background-color: rgb(157, 179, 50);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 50px auto 50px;
+  grid-template-areas:
+    'h h h h h h h h h h h h'
+    'm m c c c c c c c c c c'
+    'f f f f f f f f f f f f';
+
+  div {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @for $i from 1 through 4 {
+    div:nth-child(#{$i}) {
+      @include childHandler($i, lighten($base-color, $i * 10%));
+    }
+  }
+}
+.header {
+  //   grid-column-start: 1;
+  //   grid-column-end: 3;
+  //   grid-column: 1/3;
+  //   grid-column: 2/-1;
+  grid-area: h;
+}
+.footer {
+  //   grid-column-start: 1;
+  //   grid-column-end: 3;
+  //   grid-column: 1/3;
+  //grid-column: 1 / span 2; //1 theke suru hoye 2 column porjonto choriye jao
+  //   grid-column: 1/-1;
+  grid-area: f;
+}
+.content {
+  //   grid-column: 2/-1;
+  grid-area: c;
+}
+.menu {
+  //   grid-row: 1/3;
+  //   grid-column: 1/2;
+  grid-area: m;
+}

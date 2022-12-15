@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  /*
+  flex-direction: column;
+  flex-direction: column-reverse;*/
+  /* flex-direction: row; */
+  /* flex-wrap: wrap;  */
+  /*by default: flex-wrap: nowrap*/
+  width: 100vw;
+  height: 100vh;
+  flex-flow: row wrap; /*flex-flow:[flex-direction][flex-wrap]*/
+  justify-content: center;
+  align-content: center;
+  /* flex-grow: 1; */
+
+  /*justify-content works only with main axis*/
+
+  /*
+  justify-content: flex-start; // whole container left-side
+  justify-content: flex-end; // whole container right-side
+  justify-content: center; // whole container center
+  justify-content: space-between;
+  justify-content: space-around; // not equal space
+  justify-content: space-evenly; // equal space
+
+  */
+
+  /*align-item works only with cross axis*/
+  /*align-content works only with cross axis*/
+
+  /* align-content: center;
+  align-content: space-between; */
+}
+
+.container .item {
+  padding: 10px;
+  border: 1px solid #fff;
+
+  text-align: center;
+  color: #fff;
+  /* width: 10%; */
+  flex-basis: 10%; /*width will overflow the container when screen size became smaller. SO we should use flex basis*/
+
+  /*flex: [flex-grow] [flex-shrink] [flex-basis]*/
+}
+
+.item:nth-child(odd) {
+  background: green;
+}
+
+.item:nth-child(even) {
+  background: blue;
+}
+
+/*initially order of all items in flex container is 0. if we change order than 0,1,2,3 that way they are organize themselves*/
+
+.one {
+  order: 1;
+}
+.two {
+  order: 2;
+}
+.four {
+  order: 3;
+}
